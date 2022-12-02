@@ -24,44 +24,44 @@ public class RockPaperScissors {
             String key = entry.getKey();
             int points = 0;
             switch (key.charAt(key.length() - 1)) {
-                case 'X':
+                case 'X': // rock
                     points += 1;
                     switch (key.charAt(0)) {
-                        case 'A':
+                        case 'A': // rock
                             points += 3;
                             break;
-                        case 'B':
+                        case 'B': // paper
 //                            points += 0;
                             break;
-                        case 'C':
+                        case 'C': // scissors
                             points += 6;
                             break;
                     }
                     break;
-                case 'Y':
+                case 'Y': // paper
                     points += 2;
                     switch (key.charAt(0)) {
-                        case 'A':
+                        case 'A': // rock
                             points += 6;
                             break;
-                        case 'B':
+                        case 'B': // paper
                             points += 3;
                             break;
-                        case 'C':
+                        case 'C': // scissors
 //                            points += 0;
                             break;
                     }
                     break;
-                case 'Z':
+                case 'Z': // scissors
                     points += 3;
                     switch (key.charAt(0)) {
-                        case 'A':
+                        case 'A': // rock
 //                            points += 0;
                             break;
-                        case 'B':
+                        case 'B': // paper
                             points += 6;
                             break;
-                        case 'C':
+                        case 'C': // scissors
                             points += 3;
                             break;
                     }
@@ -70,6 +70,58 @@ public class RockPaperScissors {
             totalPoints += points * entry.getValue().size();
         }
         log.info("total points: " + totalPoints);
+
+        totalPoints = 0;
+        for (Map.Entry<String, List<String>> entry : combinations.entrySet()) {
+            String key = entry.getKey();
+            int points = 0;
+            switch (key.charAt(key.length() - 1)) {
+                case 'X': // lose
+//                    points += 0;
+                    switch (key.charAt(0)) {
+                        case 'A': // rock
+                            points += 3;
+                            break;
+                        case 'B': // paper
+                            points += 1;
+                            break;
+                        case 'C': // scissors
+                            points += 2;
+                            break;
+                    }
+                    break;
+                case 'Y': // draw
+                    points += 3;
+                    switch (key.charAt(0)) {
+                        case 'A': // rock
+                            points += 1;
+                            break;
+                        case 'B': // paper
+                            points += 2;
+                            break;
+                        case 'C': // scissors
+                            points += 3;
+                            break;
+                    }
+                    break;
+                case 'Z': // win
+                    points += 6;
+                    switch (key.charAt(0)) {
+                        case 'A': // rock
+                            points += 2;
+                            break;
+                        case 'B': // paper
+                            points += 3;
+                            break;
+                        case 'C': // scissors
+                            points += 1;
+                            break;
+                    }
+                    break;
+            }
+            totalPoints += points * entry.getValue().size();
+        }
+        log.info("total points (second logic): " + totalPoints);
 
         log.info("elapsed time (ms): " + (Instant.now().toEpochMilli() - start.toEpochMilli()));
 
