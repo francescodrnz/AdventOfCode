@@ -12,7 +12,7 @@ import static com.aoc2.utils.AocUtils.readFile;
 @Slf4j
 public class RockPaperScissors {
 
-    public static void main(String[] args) {
+    public static void run() {
 
         Instant start = Instant.now();
 

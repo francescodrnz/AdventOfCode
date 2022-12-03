@@ -1,6 +1,7 @@
 package com.aoc2.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Comparator;
@@ -12,10 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static com.aoc2.utils.AocUtils.readFile;
 
 @Slf4j
+@Service
 public class CalorieCounting {
     static final String ELF = "elf";
 
-    public static void main(String[] args) {
+    public static void run() {
 
         Instant start = Instant.now();
 

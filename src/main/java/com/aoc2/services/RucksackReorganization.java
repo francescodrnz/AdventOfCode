@@ -14,7 +14,7 @@ import static com.aoc2.utils.AocUtils.readFile;
 public class RucksackReorganization {
     static final String ALPHABET = "0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    public static void main(String[] args) {
+    public static void run() {
 
         Instant start = Instant.now();
 
