@@ -1,5 +1,6 @@
 package com.aoc2021.controller;
 
+import com.aoc2021.services.Dive;
 import com.aoc2021.services.SonarSweep;
 import com.utils.EmptyService;
 
@@ -20,6 +21,9 @@ public class MainClass {
                 return 0;
             case 1:
                 SonarSweep.run();
+                break;
+            case 2:
+                Dive.run();
                 break;
             default:
                 EmptyService.run();
