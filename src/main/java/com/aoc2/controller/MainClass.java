@@ -1,6 +1,7 @@
 package com.aoc2.controller;
 
 import com.aoc2.services.CalorieCounting;
+import com.aoc2.services.EmptyService;
 import com.aoc2.services.RockPaperScissors;
 import com.aoc2.services.RucksackReorganization;
 import org.springframework.stereotype.Controller;
@@ -22,15 +23,17 @@ public class MainClass {
                 return 0;
             case 1:
                 CalorieCounting.run();
-                return 1;
+                break;
             case 2:
                 RockPaperScissors.run();
-                return 1;
+                break;
             case 3:
                 RucksackReorganization.run();
-                return 1;
+                break;
+            default:
+                EmptyService.run();
         }
-        return 0;
+        return 1;
     }
 
     public static int askDay() {
