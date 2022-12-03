@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AocUtils {
-    public static List<String> readFile(String path) {
-        File file = new File(path);
+    public static List<String> readFile(String fileName) {
+        File file = new File("./externalfile/" + fileName + ".txt");
 
         List<String> lines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {

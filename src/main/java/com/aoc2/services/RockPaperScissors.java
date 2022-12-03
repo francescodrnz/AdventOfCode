@@ -16,7 +16,7 @@ public class RockPaperScissors {
 
         Instant start = Instant.now();
 
-        List<String> lines = readFile("./externalfile/rockpaperscissors.txt");
+        List<String> lines = readFile("rockpaperscissors");
 
         int totalPoints = 0;
         Map<String, List<String>> combinations = lines.stream().collect(Collectors.groupingBy(s -> s));

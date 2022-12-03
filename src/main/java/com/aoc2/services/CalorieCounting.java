@@ -19,7 +19,7 @@ public class CalorieCounting {
 
         Instant start = Instant.now();
 
-        List<String> lines = readFile("./externalfile/calories.txt");
+        List<String> lines = readFile("calories");
 
         Map<String, Integer> elvesMap = new HashMap<>();
         AtomicInteger counter = new AtomicInteger(0);
