@@ -26,6 +26,25 @@ public class Dive {
         int finalPosition = forward * (down - up);
         log.info("Final course position: " + finalPosition);
 
+        int aim = 0;
+        int depth = 0;
+        forward = 0;
+        for (String line : lines) {
+            int value = Integer.parseInt(line.split(" ")[1]);
+            switch (line.split(" ")[0]) {
+                case "forward":
+                    forward += value;
+                    depth += aim * value;
+                    break;
+                case "up":
+                    aim -= value;
+                    break;
+                case "down":
+                    aim += value;
+                    break;
+            }
+        }
+        log.info("Final course position (second logic): " + forward * depth);
 
         log.info("elapsed time (ms): " + (Instant.now().toEpochMilli() - start.toEpochMilli()));
     }

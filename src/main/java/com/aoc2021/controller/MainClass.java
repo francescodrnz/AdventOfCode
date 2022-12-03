@@ -10,9 +10,11 @@ import static com.utils.AoCUtils.askDay;
 public class MainClass {
 
     public static void main(String[] args) {
-        do {
-            selectDay(askDay());
-        } while (selectDay(askContinue()) != 0);
+        selectDay(askDay());
+        while (true) {
+            if (selectDay(askContinue()) == 0)
+                break;
+        }
     }
 
     private static int selectDay(int askDay) {
