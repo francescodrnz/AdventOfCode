@@ -1,12 +1,13 @@
-package com.aoc2.controller;
+package com.aoc2022.controller;
 
-import com.aoc2.services.CalorieCounting;
-import com.aoc2.services.EmptyService;
-import com.aoc2.services.RockPaperScissors;
-import com.aoc2.services.RucksackReorganization;
+import com.aoc2022.services.CalorieCounting;
+import com.utils.EmptyService;
+import com.aoc2022.services.RockPaperScissors;
+import com.aoc2022.services.RucksackReorganization;
 import org.springframework.stereotype.Controller;
 
-import java.util.Scanner;
+import static com.utils.AoCUtils.askContinue;
+import static com.utils.AoCUtils.askDay;
 
 @Controller
 public class MainClass {
@@ -34,15 +35,5 @@ public class MainClass {
                 EmptyService.run();
         }
         return 1;
-    }
-
-    public static int askDay() {
-        System.out.print("Choose the day to run: ");
-        return new Scanner(System.in).nextInt();
-    }
-
-    public static int askContinue() {
-        System.out.print("Run another day? (0 to exit): ");
-        return new Scanner(System.in).nextInt();
     }
 }

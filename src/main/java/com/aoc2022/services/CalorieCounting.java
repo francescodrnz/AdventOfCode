@@ -1,4 +1,4 @@
-package com.aoc2.services;
+package com.aoc2022.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.aoc2.utils.AocUtils.readFile;
+import static com.utils.AoCUtils.readFile;
 
 @Slf4j
 @Service

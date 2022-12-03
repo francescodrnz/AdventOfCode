@@ -1,4 +1,4 @@
-package com.aoc2.services;
+package com.aoc2022.services;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.aoc2.utils.AocUtils.readFile;
+import static com.utils.AoCUtils.readFile;
 
 @Slf4j
 public class RucksackReorganization {
