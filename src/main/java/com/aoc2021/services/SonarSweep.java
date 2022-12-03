@@ -22,6 +22,17 @@ public class SonarSweep {
         }
         log.info("Times measurements are larger than the previous measurement: " + depthIncreases);
 
+        depthIncreases = 0;
+        for (int i = 0; i < lines.size() - 3; i++) {
+            int firstThreeDepths = 0, secondThreeDepths = 0;
+            for (int j = i; j < i + 3; j++)
+                firstThreeDepths += Integer.parseInt(lines.get(j));
+            for (int j = i + 1; j < i + 4; j++)
+                secondThreeDepths += Integer.parseInt(lines.get(j));
+            depthIncreases += firstThreeDepths < secondThreeDepths ? 1 : 0;
+        }
+        log.info("Times group of 3 measurements are larger than the previous group of 3 measurements: " + depthIncreases);
+
         log.info("elapsed time (ms): " + (Instant.now().toEpochMilli() - start.toEpochMilli()));
     }
 
