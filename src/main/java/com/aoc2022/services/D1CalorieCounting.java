@@ -14,7 +14,7 @@ import static com.utils.AoCUtils.readFile;
 
 @Slf4j
 @Service
-public class CalorieCounting {
+public class D1CalorieCounting {
     static final String ELF = "elf";
 
     public static void run() {

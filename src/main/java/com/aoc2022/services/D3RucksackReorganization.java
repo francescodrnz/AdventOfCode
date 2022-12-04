@@ -11,7 +11,7 @@ import java.util.Set;
 import static com.utils.AoCUtils.readFile;
 
 @Slf4j
-public class RucksackReorganization {
+public class D3RucksackReorganization {
     static final String ALPHABET = "0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static void run() {

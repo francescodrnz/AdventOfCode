@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static com.utils.AoCUtils.readFile;
 
 @Slf4j
-public class RockPaperScissors {
+public class D2RockPaperScissors {
 
     public static void run() {
 
