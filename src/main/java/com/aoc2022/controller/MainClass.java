@@ -1,10 +1,7 @@
 package com.aoc2022.controller;
 
-import com.aoc2022.services.D1CalorieCounting;
-import com.aoc2022.services.D4CampCleanup;
+import com.aoc2022.services.*;
 import com.utils.EmptyService;
-import com.aoc2022.services.D2RockPaperScissors;
-import com.aoc2022.services.D3RucksackReorganization;
 import org.springframework.stereotype.Controller;
 
 import static com.utils.AoCUtils.askContinue;
@@ -36,6 +33,9 @@ public class MainClass {
                 break;
             case 4:
                 D4CampCleanup.run();
+                break;
+            case 5:
+                D5SupplyStacks.run();
                 break;
             default:
                 EmptyService.run();
