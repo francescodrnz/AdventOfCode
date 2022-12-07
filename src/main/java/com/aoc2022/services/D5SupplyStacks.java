@@ -19,9 +19,9 @@ public class D5SupplyStacks {
         List<String> lines = readFile("supplystacks");
 
         List<String> cratesLines = ListUtils.partition(lines, lines.indexOf("") - 1).get(0);
-        List<String> moves = lines.subList(lines.indexOf("") + 1, lines.size() - 1);
+        List<String> moves = lines.subList(lines.indexOf("") + 1, lines.size());
 
-        Map<String, List<String>> cratesOld = new HashMap<>();
+        Map<String, LinkedList<String>> cratesOld = new HashMap<>();
         AtomicInteger cratesNumber = new AtomicInteger();
         for (String cratesLine : cratesLines) {
             cratesLine.chars().forEach(ch -> {
@@ -33,7 +33,7 @@ public class D5SupplyStacks {
         lines.get(lines.indexOf("") - 1).chars().forEach(ch -> {
             if (ch != ' ') {
                 String key = (char) ch + " " + counter.get();
-                cratesOld.put(key, new ArrayList<>(Collections.nCopies(cratesNumber.get(), " ")));
+                cratesOld.put(key, new LinkedList<>(Collections.nCopies(cratesNumber.get(), " ")));
             }
             counter.addAndGet(1);
         });
@@ -51,13 +51,20 @@ public class D5SupplyStacks {
             crateNumber.set(1);
         }
 
-        Map<String, List<String>> crates = cratesOld.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().split(" ")[0], Map.Entry::getValue));
+        Map<String, LinkedList<String>> crates = cratesOld.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().split(" ")[0], Map.Entry::getValue));
+        int a = 0;
         for (String move : moves) {
+            a++;
             int numOfCrates = Integer.parseInt(move.substring(move.indexOf(" ") + 1, move.indexOf(" ", move.indexOf(" ") + 1)));
+            log.info("move "+a+": "+ move);
             move = move.replace("move " + numOfCrates + " from ", "");
-            List<String> crateFrom = crates.get(move.substring(0, move.indexOf(" ")));
-            List<String> crateTo = crates.get(move.substring(move.lastIndexOf(" ") + 1));
-
+            LinkedList<String> crateFrom = crates.get(move.substring(0, move.indexOf(" ")));
+            LinkedList<String> crateTo = crates.get(move.substring(move.lastIndexOf(" ") + 1));
+            log.info("crateFrom before: "+String.join("", crateFrom));
+            log.info("crateTo before: "+String.join("", crateTo));
+            if (a == moves.size() -1) {
+                log.info("ao");
+            }
             for (int i = 0; i < numOfCrates; i++) {
                 int firstElementIndex = 0;
                 while (" ".equals(crateFrom.get(firstElementIndex))) {
@@ -72,11 +79,13 @@ public class D5SupplyStacks {
 
                 crateFrom.set(firstElementIndex, " ");
             }
+            log.info("crateFrom after: "+String.join("", crateFrom));
+            log.info("crateTo after: "+String.join("", crateTo));
         }
 
         StringBuilder topCrate = new StringBuilder();
-        TreeMap<String, List<String>> sortedCrates = new TreeMap<>(crates);
-        for (Map.Entry<String, List<String>> entry : sortedCrates.entrySet()) {
+        TreeMap<String, LinkedList<String>> sortedCrates = new TreeMap<>(crates);
+        for (Map.Entry<String, LinkedList<String>> entry : sortedCrates.entrySet()) {
             int firstElementIndex = 0;
             while (firstElementIndex < entry.getValue().size() && " ".equals(entry.getValue().get(firstElementIndex))) {
                 firstElementIndex++;
