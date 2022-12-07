@@ -37,6 +37,9 @@ public class MainClass {
             case 5:
                 D5SupplyStacks.run();
                 break;
+            case 6:
+                D6TuningTrouble.run();
+                break;
             default:
                 EmptyService.run();
         }
