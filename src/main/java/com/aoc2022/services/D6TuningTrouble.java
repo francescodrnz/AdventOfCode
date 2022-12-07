@@ -18,23 +18,24 @@ public class D6TuningTrouble {
         List<String> lines = readFile("datastreambuffer");
 
         for (String line : lines) {
-            log.info("index of the first group of 4 unique characters: "+ getFirstGroupOfFour(line));
+            log.info("index of the first group of 4 unique characters: "+ getFirstGroupOfNUniqueChars(line, 4));
+            log.info("index of the first group of 14 unique characters: "+ getFirstGroupOfNUniqueChars(line, 14));
         }
 
         log.info("elapsed time (ms): " + (Instant.now().toEpochMilli() - start.toEpochMilli()));
     }
 
-    private static int getFirstGroupOfFour(String input) {
+    private static int getFirstGroupOfNUniqueChars(String input, int n) {
         // Edge case: input string is empty or has less than 4 characters
-        if (input == null || input.length() < 4) {
+        if (input == null || input.length() < n) {
             return -1;
         }
 
         // Iterate over the input string, starting from the first character
-        for (int i = 0; i < input.length() - 3; i++) {
+        for (int i = 0; i < input.length() - n - 1; i++) {
             // Check if the current group of 4 characters is unique
-            if (isUnique(input, i)) {
-                return i + 4; // return the index of the last character of the group
+            if (isUnique(input, i, n)) {
+                return i + n; // return the index of the last character of the group
             }
         }
 
@@ -42,12 +43,12 @@ public class D6TuningTrouble {
         return -1;
     }
 
-    private static boolean isUnique(String input, int startIndex) {
+    private static boolean isUnique(String input, int startIndex, int n) {
         // Create a set to store the characters in the current group
         Set<Character> set = new HashSet<>();
 
         // Iterate over the current group of 4 characters
-        for (int i = startIndex; i < startIndex + 4; i++) {
+        for (int i = startIndex; i < startIndex + n; i++) {
             // If the current character is already in the set, return false
             if (set.contains(input.charAt(i))) {
                 return false;
